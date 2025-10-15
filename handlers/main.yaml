@@ -4,3 +4,6 @@
 
 - name: "systemd_boot:update"
   ansible.builtin.include_tasks: "bootctl_update.yaml"
+
+- name: "systemd_boot:package_facts"
+  ansible.builtin.include_tasks: "package_facts.yaml"

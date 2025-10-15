@@ -16,7 +16,7 @@
     state: "{{ 'latest' if systemd_boot_package_upgrade else 'present' }}"
   when: "systemd_boot_package_install or systemd_boot_package_upgrade"
   notify:
-    - "systemd:package_facts"
+    - "systemd_boot:package_facts"
     - "systemd:daemon_reexec"
     - "systemd_boot:install"
 

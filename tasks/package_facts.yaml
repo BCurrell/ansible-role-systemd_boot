@@ -1,0 +1,5 @@
+---
+- name: "systemd_boot:package_facts"
+  ansible.builtin.package_facts:
+    manager: "auto"
+  changed_when: false

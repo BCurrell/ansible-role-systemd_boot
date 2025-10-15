@@ -17,3 +17,4 @@
 
 !/tasks/bootctl_install.yaml
 !/tasks/bootctl_update.yaml
+!/tasks/package_facts.yaml
