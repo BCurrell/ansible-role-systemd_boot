@@ -2,8 +2,19 @@
 systemd_boot_package_name: >-
   {% if ansible_os_family == 'Gentoo' %}
     sys-apps/systemd
+  {% elif ansible_os_family in (
+    'Alpine',
+    'Archlinux'
+  ) %}
+    systemd
   {% elif ansible_distribution == 'Debian' %}
     {% if ansible_distribution_major_version | int < 12 %}
+      systemd
+    {% else %}
+      systemd-boot
+    {% endif %}
+  {% elif ansible_os_family == 'RedHat' %}
+    {% if ansible_distribution_major_version | int < 8 %}
       systemd
     {% else %}
       systemd-boot

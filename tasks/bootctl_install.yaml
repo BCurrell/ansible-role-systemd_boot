@@ -1,3 +1,4 @@
 ---
 - name: "systemd_boot:install"
   ansible.builtin.command: "bootctl install"
+  changed_when: false

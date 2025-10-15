@@ -1,3 +1,11 @@
 ---
+galaxy_info:
+  role_name: "systemd_boot"
+  namespace: "bcurrell"
+  author: "Brandon Currell <brandon@currell.pw"
+  description: "Ansible role for the install, upgrade and configuration of systemd-boot"
+  license: "MIT"
+  min_ansible_version: "1.2"
+
 dependencies:
   - role: "systemd"
