@@ -1,0 +1,6 @@
+---
+- name: "systemd_boot:install"
+  ansible.builtin.include_tasks: "bootctl_install.yaml"
+
+- name: "systemd_boot:update"
+  ansible.builtin.include_tasks: "bootctl_update.yaml"

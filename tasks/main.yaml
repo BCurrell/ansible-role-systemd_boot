@@ -1,0 +1,24 @@
+---
+- name: "systemd_boot:package_facts"
+  ansible.builtin.include_tasks: "package_facts.yaml"
+
+- name: "systemd_boot:not_installed"
+  ansible.builtin.meta: "end_host"
+  when:
+    # Package is not installed
+    - "systemd_boot_package_name not in ansible_facts.packages"
+    # Package should not be installed by role
+    - "not systemd_boot_package_install"
+
+- name: "systemd_boot:install_upgrade"
+  ansible.builtin.package:
+    name: "{{ systemd_boot_package_name }}"
+    state: "{{ 'latest' if systemd_boot_package_upgrade else 'present' }}"
+  when: "systemd_boot_package_install or systemd_boot_package_upgrade"
+  notify:
+    - "systemd:package_facts"
+    - "systemd:daemon_reexec"
+    - "systemd_boot:install"
+
+- name: "systemd_boot:flush_handlers"
+  ansible.builtin.meta: "flush_handlers"

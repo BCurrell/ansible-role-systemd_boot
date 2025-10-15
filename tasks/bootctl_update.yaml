@@ -1,0 +1,3 @@
+---
+- name: "systemd_boot:update"
+  ansible.builtin.command: "bootctl update"

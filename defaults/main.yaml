@@ -1,0 +1,15 @@
+---
+systemd_boot_package_name: >-
+  {% if ansible_os_family == 'Gentoo' %}
+    sys-apps/systemd
+  {% elif ansible_distribution == 'Debian' %}
+    {% if ansible_distribution_major_version | int < 12 %}
+      systemd
+    {% else %}
+      systemd-boot
+    {% endif %}
+  {% else %}
+    systemd-boot
+  {% endif %}
+systemd_boot_package_install: false
+systemd_boot_package_upgrade: false
